@@ -13,6 +13,12 @@ public class PickupBehaviour : MonoBehaviour
     private Item currentItem;
     public void DoPickup(Item item)
     {
+        if(inventory.IsFull())
+        {
+            Debug.Log("Inventory is full, cannot pick up : " + item.itemData.name);
+            return;
+        }
+
         currentItem = item;
         // Jouer l'animation du personnage pour ramasser l'objet
         playerAnimator.SetTrigger("Pickup");
